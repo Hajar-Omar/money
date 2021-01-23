@@ -1,12 +1,18 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "../core/guards/auth.guard";
-import { BudgetListComponent } from "./components/budget-list/budget-list.component";
+import { BudgetDetailsComponent } from "./budget-details/budget-details.component";
+import { BudgetListComponent } from "./budget-list/budget-list.component";
 
 const routes: Routes = [
   {
     path: "",
     component: BudgetListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: ":id",
+    component: BudgetDetailsComponent,
     canActivate: [AuthGuard],
   },
 ];

@@ -1,15 +1,13 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AppComponent } from "./app.component";
 import { NotFoundComponent } from "./core/components/not-found/not-found.component";
 
 const routes: Routes = [
   {
     path: "",
-    // component: AppComponent,
     children: [
       {
-        path: "bugdet",
+        path: "budget",
         loadChildren: () =>
           import("./budget/budget.module").then((m) => m.BudgetModule),
       },
@@ -20,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: "",
-        redirectTo: "bugdet",
+        redirectTo: "budget",
         pathMatch: "full",
       },
     ],
