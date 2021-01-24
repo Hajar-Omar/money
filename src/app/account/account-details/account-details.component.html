@@ -1,0 +1,110 @@
+<div class="row m-0 d-flex mb-3" *ngIf="accountDetails">
+  <div class="col-12 col-lg-8 d-flex flex-row">
+    <h4 class="d-flex align-items-center">
+      {{ accountDetails.data.account.name }}
+    </h4>
+    <div class="mx-2 d-flex align-items-center flex-column">
+      <p>$ {{ accountDetails.data.account.cleared_balance }}</p>
+      <p>Cleared Balance</p>
+    </div>
+    <div class="mx-2 d-flex align-items-center">
+      <p>+</p>
+    </div>
+    <div class="mx-2 d-flex align-items-center flex-column">
+      <p>$ {{ accountDetails.data.account.uncleared_balance }}</p>
+      <p>Uncleared Balance</p>
+    </div>
+    <div class="mx-2 d-flex align-items-center">
+      <p>=</p>
+    </div>
+    <div class="mx-2 d-flex align-items-center flex-column">
+      <p>$ {{ accountDetails.data.account.balance }}</p>
+      <p>Working Balance</p>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table
+    mat-table
+    matSort
+    [dataSource]="dataSource"
+    class="w-100 table table-striped normalHeader hasPaginator"
+  >
+    <!-- account_name Column -->
+    <ng-container matColumnDef="account_name">
+      <th scope="col" mat-header-cell *matHeaderCellDef>
+        ACCOUNT
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.account_name }}
+      </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th scope="col" mat-header-cell *matHeaderCellDef>DATE</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.date }}
+      </td>
+    </ng-container>
+
+    <!-- payee_name Column -->
+    <ng-container matColumnDef="payee_name">
+      <th scope="col" mat-header-cell *matHeaderCellDef>PAYEE</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.payee_name }}
+      </td>
+    </ng-container>
+
+    <!-- category_name Column -->
+    <ng-container matColumnDef="category_name">
+      <th scope="col" mat-header-cell *matHeaderCellDef>
+        CATEGORY
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.category_name }}
+      </td>
+    </ng-container>
+
+    <!-- memo Column -->
+    <ng-container matColumnDef="memo">
+      <th scope="col" mat-header-cell *matHeaderCellDef>
+        MEMO
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.memo ? element.memo : "-" }}
+      </td>
+    </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+      <th scope="col" mat-header-cell *matHeaderCellDef>
+        OUTFLOW
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.amount < 0  ? element.amount : ''}}
+      </td>
+    </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="inflow">
+        <th scope="col" mat-header-cell *matHeaderCellDef>
+          INFLOW
+        </th>
+        <td mat-cell *matCellDef="let element">
+            {{ element.amount > 0  ? element.amount : ''}}
+        </td>
+      </ng-container>
+
+    <tr
+      mat-header-row
+      class="thead-light"
+      *matHeaderRowDef="displayedColumns"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+</div>

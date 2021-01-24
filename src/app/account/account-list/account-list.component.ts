@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatSort } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";
-import { AccountService } from "../core/services/account/account.service";
+import { AccountService } from "../../core/services/account/account.service";
 
 @Component({
   selector: "app-account-list",

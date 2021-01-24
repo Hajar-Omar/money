@@ -58,6 +58,6 @@
       class="thead-light"
       *matHeaderRowDef="displayedColumns"
     ></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['account', budgetId, row.id]"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['/account', budgetId, row.id]"></tr>
   </table>
 </div>
