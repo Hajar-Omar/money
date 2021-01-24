@@ -17,6 +17,7 @@ export class BudgetListComponent implements OnInit {
     private sharedService: SharedService,
     private router: Router
   ) {
+    this.sharedService.setSelectedBudget(null);
     this.loadBudgets();
   }
 
@@ -30,6 +31,10 @@ export class BudgetListComponent implements OnInit {
 
   changeBudget(budgetId: string) {
     this.router.navigate(["budget", budgetId]);
-    this.sharedService.setSelectedBudget(budgetId);
+
+    this.sharedService.setSelectedBudget(null);
+    this.budgetService.getBudgetById(budgetId).subscribe(d=>{
+      this.sharedService.setSelectedBudget(d);
+    })
   }
 }

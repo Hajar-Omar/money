@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { slide } from "src/app/core/animations/slide";
 import { ICateBudget, ICategoryGroup } from "src/app/core/models/category";
 import { BudgetService } from "src/app/core/services/budget/budget.service";
+import { SharedService } from "src/app/core/services/shared/shared.service";
 
 @Component({
   selector: "app-budget-details",
@@ -26,7 +27,8 @@ export class BudgetDetailsComponent implements OnInit {
 
   constructor(
     private budgetService: BudgetService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService
   ) {
     this.id = this.activatedRoute.snapshot.params["id"];
     this.loadCategories();

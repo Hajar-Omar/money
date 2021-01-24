@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { IBudgetListRes } from "../../models/budget";
+import { IBudgetDetails } from "../../models/budget-details";
 import { ICateBudget, ICategoryRes } from "../../models/category";
 import { AppConfigService } from "../app-config/app-config.service";
 
@@ -32,6 +33,12 @@ export class BudgetService {
   ): Observable<ICateBudget> {
     return this.httpClient.get<ICateBudget>(
       `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/categories/${categoryId}`
+    );
+  }
+
+  getBudgetById(budgetId: string): Observable<IBudgetDetails> {
+    return this.httpClient.get<IBudgetDetails>(
+      `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}`
     );
   }
 }

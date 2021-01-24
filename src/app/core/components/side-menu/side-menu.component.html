@@ -1,15 +1,44 @@
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="budget">
-    <mat-icon>folder_open</mat-icon> Open Budget
+<div *ngIf="sharedService.isSelectedBudget">
+  <button mat-button [matMenuTriggerFor]="menu">
+    {{ budget.data.budget.name }}
   </button>
-</mat-menu>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="">
+      <mat-icon>folder_open</mat-icon> Open Budget
+    </button>
+  </mat-menu>
+  <ul>
+    <li>
+      <a mat-button routerLinkActive="active" routerLink="budget">Budget</a>
+    </li>
+    <li>
+      <a
+        mat-button
+        routerLinkActive="active"
+        [routerLink]="['account', budget.data.budget.id]"
+        >All Accounts</a
+      >
+    </li>
+  </ul>
 
-<mat-expansion-panel hideToggle>
+  <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title>
-       BUDGET <span>$ </span>
-      </mat-panel-title>
+      <mat-panel-title> BUDGET <span>$ </span> </mat-panel-title>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+    <ul>
+      <li *ngFor="let account of budget.data.budget.accounts">
+        <a [routerLink]="['account', budget.data.budget.id, account.id]">{{
+          account.name
+        }}</a>
+      </li>
+    </ul>
   </mat-expansion-panel>
+</div>
+<span>{{!sharedService.isSelectedBudget}}</span>
+<div *ngIf="!sharedService.isSelectedBudget">
+  <h3><b>YNAB.</b></h3>
+  <p>
+    Learn More<br />
+    There’s no shame in one-after-another if it changes your life.
+  </p>
+</div>

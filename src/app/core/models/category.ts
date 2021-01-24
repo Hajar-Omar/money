@@ -29,7 +29,7 @@ export interface ICategory {
   goal_percentage_complete: number;
   deleted: boolean;
 }
-
+ 
 export interface ICateBudget {
   data: {
     category: {

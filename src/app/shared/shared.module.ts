@@ -17,6 +17,7 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatSliderModule,
+  MatTooltipModule,
 } from "@angular/material";
 
 @NgModule({
@@ -39,6 +40,7 @@ import {
     MatExpansionModule,
     MatButtonModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   exports: [
     MatSnackBarModule,
@@ -54,6 +56,7 @@ import {
     MatExpansionModule,
     MatButtonModule,
     MatInputModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}
