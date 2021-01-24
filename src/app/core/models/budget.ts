@@ -24,7 +24,7 @@ export interface IBudget {
     currency_symbol: string;
     display_symbol: boolean;
   };
-  accounts: [
+  accounts?: [
     {
       id: string;
       name: string;

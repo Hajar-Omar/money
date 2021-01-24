@@ -16,13 +16,13 @@ export class BudgetService {
 
   getAllBudgets(include_accounts: boolean): Observable<IBudgetListRes> {
     return this.httpClient.get<IBudgetListRes>(
-      `${this.appConfigService.getAppConfig.baseUrl}budgets?include_accounts=${include_accounts}`
+      `${this.appConfigService.AppConfig.baseUrl}budgets?include_accounts=${include_accounts}`
     );
   }
 
   getCategoriesByBudgetId(budgetId: string): Observable<ICategoryRes> {
     return this.httpClient.get<ICategoryRes>(
-      `${this.appConfigService.getAppConfig.baseUrl}budgets/${budgetId}/categories`
+      `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/categories`
     );
   }
 
@@ -31,7 +31,7 @@ export class BudgetService {
     categoryId: string
   ): Observable<ICateBudget> {
     return this.httpClient.get<ICateBudget>(
-      `${this.appConfigService.getAppConfig.baseUrl}budgets/${budgetId}/categories/${categoryId}`
+      `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/categories/${categoryId}`
     );
   }
 }

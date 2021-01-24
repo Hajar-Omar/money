@@ -56,10 +56,8 @@ export class BudgetDetailsComponent implements OnInit {
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
-      // this.isButtonEnable = true;
     } else {
       this.dataSource.data.forEach((row) => this.selection.select(row));
-      // this.isButtonEnable = false;
     }
   }
 }

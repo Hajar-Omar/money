@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if (this.appConfigService.getAppConfig.token !== null) return true;
+    if (this.appConfigService.AppConfig.token !== null) return true;
     this.router.navigate([""]);
     return false;
   }

@@ -23,7 +23,7 @@ export class HttpHeadersInterceptor implements HttpInterceptor {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `Bearer ${this.appConfigService.getAppConfig.token}`,
+        "Authorization": `Bearer ${this.appConfigService.AppConfig.token}`,
       }),
     });
     return next.handle(authReq);

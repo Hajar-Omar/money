@@ -7,8 +7,12 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import {
+  MatButtonModule,
   MatCheckboxModule,
+  MatExpansionModule,
   MatIconModule,
+  MatInputModule,
+  MatMenuModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
@@ -31,6 +35,10 @@ import {
     MatSliderModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   exports: [
     MatSnackBarModule,
@@ -42,6 +50,10 @@ import {
     MatSliderModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatInputModule,
   ],
 })
 export class SharedModule {}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { IBudget } from "src/app/core/models/budget";
 import { BudgetService } from "src/app/core/services/budget/budget.service";
+import { SharedService } from "src/app/core/services/shared/shared.service";
 
 @Component({
   selector: "app-budget-list",
@@ -10,7 +12,11 @@ import { BudgetService } from "src/app/core/services/budget/budget.service";
 export class BudgetListComponent implements OnInit {
   budgets: IBudget[] = [];
 
-  constructor(private budgetService: BudgetService) {
+  constructor(
+    private budgetService: BudgetService,
+    private sharedService: SharedService,
+    private router: Router
+  ) {
     this.loadBudgets();
   }
 
@@ -20,5 +26,10 @@ export class BudgetListComponent implements OnInit {
     this.budgetService.getAllBudgets(false).subscribe((d) => {
       this.budgets = d.data.budgets;
     });
+  }
+
+  changeBudget(budgetId: string) {
+    this.router.navigate(["budget", budgetId]);
+    this.sharedService.setSelectedBudget(budgetId);
   }
 }

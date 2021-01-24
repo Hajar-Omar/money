@@ -8,8 +8,12 @@ import { IConfig } from "../../models/config";
 export class AppConfigService {
   private appConfig: IConfig;
 
-  get getAppConfig() {
+  get AppConfig() {
     return this.appConfig;
+  }
+
+  set AppConfig(value) {
+    this.appConfig = value;
   }
 
   constructor(private httpClient: HttpClient) {}
