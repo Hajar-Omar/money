@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource, MatSort } from "@angular/material";
+import { MatTableDataSource, MatSort, MatDialog } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";
 import { AccountService } from "../../core/services/account/account.service";
+import { CreateAccountComponent } from "../dialogs/create-account/create-account.component";
 
 @Component({
   selector: "app-account-list",
@@ -12,7 +13,6 @@ export class AccountListComponent implements OnInit {
   budgetId: string;
 
   displayedColumns: string[] = ["name", "type", "note", "balance"];
-
   dataSource = new MatTableDataSource([]);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -20,7 +20,8 @@ export class AccountListComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog
   ) {
     this.budgetId = this.activatedRoute.snapshot.params["budgetId"];
     this.loadAccounts();
@@ -37,6 +38,18 @@ export class AccountListComponent implements OnInit {
         .filter((e) => e.deleted == false)
         .sort((a, b) => b.balance - a.balance);
       this.loaded = true;
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateAccountComponent, {
+      width: "660px",
+      data: {
+        text: "",
+      },
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      // if (res) this.saveGroup();
     });
   }
 }

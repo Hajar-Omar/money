@@ -34,7 +34,7 @@ export class AccountDetailsComponent implements OnInit {
     private transactionService: TransactionService
   ) {
     this.budgetId = this.activatedRoute.snapshot.params["budgetId"];
-    this.accountId = this.activatedRoute.snapshot.params["id"];
+    this.accountId = this.activatedRoute.snapshot.params["accountId"];
 
     this.loadAccountDetails();
     this.loadTransactionsAccount();

@@ -21,4 +21,13 @@ export class TransactionService {
       `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/accounts/${accountId}/transactions`
     );
   }
+
+  getTransactionsPayees(
+    budgetId: string,
+    payeeId: string
+  ): Observable<ITransactionList> {
+    return this.httpClient.get<ITransactionList>(
+      `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/payees/${payeeId}/transactions`
+    );
+  }
 }

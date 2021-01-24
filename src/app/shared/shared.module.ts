@@ -9,6 +9,7 @@ import { MatTableModule } from "@angular/material/table";
 import {
   MatButtonModule,
   MatCheckboxModule,
+  MatDialogModule,
   MatExpansionModule,
   MatIconModule,
   MatInputModule,
@@ -41,6 +42,7 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTooltipModule,
+    MatDialogModule,
   ],
   exports: [
     MatSnackBarModule,
@@ -57,6 +59,7 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTooltipModule,
+    MatDialogModule,
   ],
 })
 export class SharedModule {}

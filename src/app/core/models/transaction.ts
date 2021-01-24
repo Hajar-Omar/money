@@ -78,7 +78,7 @@ export interface ITransactionList {
         account_name: string;
         payee_name: string;
         category_name: string;
-        subtransactions: [
+        subtransactions?: [
           {
             id: string;
             transaction_id: string;
@@ -95,6 +95,6 @@ export interface ITransactionList {
         ];
       }
     ];
-    server_knowledge: number;
+    server_knowledge?: number;
   };
 }

@@ -1,28 +1,4 @@
-<div class="row m-0 d-flex mb-3" *ngIf="accountDetails">
-  <div class="col-12 col-lg-8 d-flex flex-row">
-    <h4 class="d-flex align-items-center">
-      {{ accountDetails.data.account.name }}
-    </h4>
-    <div class="mx-2 d-flex align-items-center flex-column">
-      <p>$ {{ accountDetails.data.account.cleared_balance }}</p>
-      <p>Cleared Balance</p>
-    </div>
-    <div class="mx-2 d-flex align-items-center">
-      <p>+</p>
-    </div>
-    <div class="mx-2 d-flex align-items-center flex-column">
-      <p>$ {{ accountDetails.data.account.uncleared_balance }}</p>
-      <p>Uncleared Balance</p>
-    </div>
-    <div class="mx-2 d-flex align-items-center">
-      <p>=</p>
-    </div>
-    <div class="mx-2 d-flex align-items-center flex-column">
-      <p>$ {{ accountDetails.data.account.balance }}</p>
-      <p>Working Balance</p>
-    </div>
-  </div>
-</div>
+<h3>Payees</h3>
 
 <div class="table-responsive">
   <table
@@ -92,10 +68,6 @@
       class="thead-light"
       *matHeaderRowDef="displayedColumns"
     ></tr>
-    <tr
-      mat-row
-      [routerLink]="['/account/payee', budgetId, row.payee_id]"
-      *matRowDef="let row; columns: displayedColumns"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
