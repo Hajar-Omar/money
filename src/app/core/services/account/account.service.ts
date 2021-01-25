@@ -5,6 +5,7 @@ import {
   IAccountDetails,
   IAccountListRes,
   IAccountNew,
+  IAccountType,
 } from "../../models/account";
 import { AppConfigService } from "../app-config/app-config.service";
 
@@ -36,6 +37,12 @@ export class AccountService {
     return this.httpClient.post<IAccountDetails>(
       `${this.appConfigService.AppConfig.baseUrl}budgets/${budgetId}/accounts`,
       { account }
+    );
+  }
+
+  getAccountTypes(): Observable<IAccountType[]> {
+    return this.httpClient.get<IAccountType[]>(
+      "assets/data/account-types.json"
     );
   }
 }

@@ -53,8 +53,15 @@ img {
     border-bottom: 1px solid #eee;
   }
 }
-.example-detail-row{
-  td.mat-cell{
+.example-detail-row {
+  td.mat-cell {
     padding: 0 !important;
   }
+}
+
+.green-icon {
+  color: #6d9f38;
+}
+.large-icon {
+  font-size: 3rem;
 }

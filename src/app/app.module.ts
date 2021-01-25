@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HeaderComponent } from "./core/components/header/header.component";
 import { SideMenuComponent } from "./core/components/side-menu/side-menu.component";
 import { NotFoundComponent } from "./core/components/not-found/not-found.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppConfigService } from "./core/services/app-config/app-config.service";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpHeadersInterceptor } from "./core/interceptors/http.interceptor";
@@ -26,8 +25,6 @@ import { SharedModule } from "./shared/shared.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
   ],
   providers: [

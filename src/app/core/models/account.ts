@@ -30,3 +30,14 @@ export interface IAccountNew {
   type: string;
   balance: number;
 }
+
+export interface IAccountType {
+  disabled?: boolean;
+  name: string;
+  types: [
+    {
+      value: string;
+      viewValue: string;
+    }
+  ];
+}

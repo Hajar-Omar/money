@@ -1,0 +1,42 @@
+[
+  {
+    "disabled": false,
+    "name": "Budget",
+    "types": [
+      {
+        "value": "checking",
+        "viewValue": "Checking"
+      },
+      {
+        "value": "saving",
+        "viewValue": "Saving"
+      },
+      {
+        "value": "cash",
+        "viewValue": "Cash"
+      },
+      {
+        "value": "credit",
+        "viewValue": "Credit"
+      },
+      {
+        "value": "lineOfCredit",
+        "viewValue": "Line of Credit"
+      }
+    ]
+  },
+  {
+    "disabled": false,
+    "name": "Tracking",
+    "types": [
+      {
+        "value": "asset",
+        "viewValue": "Asset(e.g. Investment)"
+      },
+      {
+        "value": "liability",
+        "viewValue": "Liability(e.g. Mortgage)"
+      }
+    ]
+  }
+]

@@ -1,1 +1,241 @@
-<p>create-account works!</p>
+<div class="dialogContainer">
+  <div class="dialogContainer">
+    <div class="d-flex justify-content-between align-item-center">
+      <button
+        mat-button
+        *ngIf="step !== 1 && !success"
+        (click)="step = step - 1"
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <h1 mat-dialog-title>Add Unlinked Account</h1>
+      <button mat-button (click)="onNoClick()">
+        <span class="material-icons"> close </span>
+      </button>
+    </div>
+
+    <hr />
+
+    <!-- First Step -->
+    <div mat-dialog-content class="dialogContent">
+      <div class="w-100" *ngIf="step === 1">
+        <p>
+          <b>Let's go!</b> And don’t worry—if you change your mind, you can link
+          your account at any time.
+        </p>
+
+        <form [formGroup]="accountForm">
+          <div class="form-group">
+            <label for="type">What type of account are you adding?</label>
+            <mat-select id="type" class="form-control" formControlName="type">
+              <mat-option>Select an Account Type...</mat-option>
+              <mat-optgroup
+                *ngFor="let group of types"
+                [label]="group.name"
+                [disabled]="group.disabled"
+              >
+                <mat-option
+                  *ngFor="let item of group.types"
+                  [value]="item.value"
+                >
+                  {{ item.viewValue }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </div>
+          <div class="form-group">
+            <label for="name">Give it a nickname</label>
+            <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+              placeholder="Enter nickname"
+            />
+          </div>
+          <div class="form-group">
+            <label for="balance">What is your current account balance?</label>
+            <input
+              formControlName="balance"
+              type="text"
+              class="form-control"
+              id="balance"
+              digitOnly
+              aria-describedby="balance"
+              placeholder="Enter balance"
+            />
+            <small class="form-text text-muted"
+              >Go ahead—estimate! You can edit it later.</small
+            >
+          </div>
+        </form>
+        <div class="d-flex justify-content-around mb-2">
+          <button
+            mat-raised-button
+            class="btn btn-link mx-3"
+            (click)="
+              next(accountForm.controls.type.value === 'credit' ? false : true)
+            "
+            [disabled]="accountForm.invalid"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Second Step -->
+      <div class="w-100" *ngIf="step === 2">
+        <p>
+          <b
+            >Your credit card has an existing balance. Choose how to budget for
+            this card's balance:</b
+          >
+        </p>
+
+        <table class="table-bordered w-100 my-2">
+          <tr>
+            <td>ACCOUNT</td>
+            <td>{{ accountForm.controls.name.value }}</td>
+          </tr>
+          <tr>
+            <td>BALANCE</td>
+            <td>-${{ accountForm.controls.balance.value }}</td>
+          </tr>
+        </table>
+
+        <p><b>I want to:</b></p>
+
+        <mat-radio-group
+          aria-label="Select an option"
+          (change)="selectedPlan = $event"
+        >
+          <mat-radio-button value="1"
+            >Create a goal to pay off my balance over time.<br />
+            Don't have enough to pay your entire balance? A goal helps you
+            budget what you can and pay the balance over time.</mat-radio-button
+          >
+          <mat-radio-button value="2"
+            >Budget for my entire balance.<br />
+            Do you pay your entire balance every month? Great! Be sure to budget
+            for it.</mat-radio-button
+          >
+          <mat-radio-button value="3"
+            >Skip this for now.<br />
+            Pro tip: budgeting for your balance leads to less debt and more
+            triumph!</mat-radio-button
+          >
+        </mat-radio-group>
+
+        <div class="d-flex justify-content-around mb-2">
+          <button
+            mat-raised-button
+            class="btn btn-link mx-3"
+            (click)="changePlanForCredit()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Third Step -->
+      <div class="w-100" *ngIf="step === 3">
+        <table class="table-bordered w-100 my-2">
+          <tr>
+            <td>ACCOUNT</td>
+            <td>{{ accountForm.controls.name.value }}</td>
+          </tr>
+          <tr>
+            <td>BALANCE</td>
+            <td>-${{ accountForm.controls.balance.value }}</td>
+          </tr>
+        </table>
+
+        <p><b>Create a goal to pay your balance over time</b></p>
+
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1"
+            >Pay off your balance by a specific date.</mat-radio-button
+          >
+          <mat-radio-button value="2"
+            >Pay a specific amount every month until your balance is paid
+            off.</mat-radio-button
+          >
+        </mat-radio-group>
+
+        <hr />
+
+        <p><b>Set your goal target</b></p>
+
+        <div class="d-flex justify-content-around mb-2">
+          <button
+            mat-raised-button
+            class="btn btn-link mx-3"
+            (click)="step = step + 1"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Fourth Step -->
+      <div class="w-100" *ngIf="step === 4">
+        <p>
+          <b
+            >A category for your credit card payment will be created in your
+            budget, along with a goal to pay off your entire balance. This is
+            what it looks like:</b
+          >
+        </p>
+
+        <table class="table-bordered w-100 my-2">
+          <tr>
+            <td>CREDIT CARD PAYMENTS</td>
+            <td>{{ accountForm.controls.name.value }}</td>
+          </tr>
+          <tr>
+            <td>PAYMENT</td>
+            <td><span>$0.00</span></td>
+          </tr>
+        </table>
+
+        <div class="d-flex justify-content-around mb-2">
+          <button
+            mat-raised-button
+            class="btn btn-link mx-3"
+            (click)="saveAccount()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      <!-- Last Step -->
+      <div class="w-100" *ngIf="success">
+        <div class="text-center">
+          <mat-icon class="green-icon large-icon">check_circle</mat-icon>
+          <p>
+            Success! Add transactions on the web or in our mobile apps. You can
+            also download a transaction file from your institution and use
+            <a
+              href="https://docs.youneedabudget.com/article/173-file-based-import"
+              target="_blank"
+            >
+              File-Based Import.</a
+            >
+          </p>
+          <button
+            mat-raised-button
+            class="light-btn mt-3"
+            (click)="addAnother()"
+          >
+            Add another account
+          </button>
+          <div class="d-flex justify-content-end my-5">
+            <button mat-raised-button (click)="onNoClick($event)">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

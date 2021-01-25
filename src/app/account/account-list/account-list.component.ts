@@ -43,13 +43,13 @@ export class AccountListComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(CreateAccountComponent, {
-      width: "660px",
+      width: "500px",
       data: {
-        text: "",
+        budgetId: this.budgetId,
       },
     });
     dialogRef.afterClosed().subscribe((res) => {
-      // if (res) this.saveGroup();
+      this.loadAccounts();
     });
   }
 }
