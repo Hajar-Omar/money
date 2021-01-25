@@ -1,45 +1,162 @@
-<div *ngIf="sharedService.isSelectedBudget">
+<button mat-button class="transparent-bg p-0 w-100" [matMenuTriggerFor]="menu">
+  <div class="d-flex align-items-center white-text justify-content-between">
+    <h5>
+      <img
+        *ngIf="sharedService.isSelectedBudget"
+        width="25"
+        src="assets/images/tree.svg"
+        alt=""
+      />
+      {{
+        sharedService.isSelectedBudget
+          ? budget.data?.budget?.name
+          : "You Need a Budget"
+      }}
+    </h5>
+    <mat-icon class="ml-2">arrow_drop_down</mat-icon>
+  </div>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="">
+    <mat-icon>folder_open</mat-icon> Open Budget
+  </button>
+</mat-menu>
+
+<div *ngIf="sharedService.isSelectedBudget" class="white-text mt-3">
   <div *ngIf="budget">
-    <button mat-button [matMenuTriggerFor]="menu">
-      {{ budget.data?.budget?.name }}
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="">
-        <mat-icon>folder_open</mat-icon> Open Budget
-      </button>
-    </mat-menu>
-    <ul>
-      <li>
-        <a mat-button routerLinkActive="active" routerLink="budget">Budget</a>
+    <ul class="menu-list">
+      <li class="mb-1">
+        <a
+          mat-button
+          routerLinkActive="active"
+          [routerLink]="['budget', budget.data?.budget?.id]"
+        >
+          <mat-icon> print</mat-icon> Budget</a
+        >
       </li>
-      <li>
+      <li class="mb-1">
         <a
           mat-button
           routerLinkActive="active"
           [routerLink]="['account', budget.data?.budget?.id]"
-          >All Accounts</a
+          ><mat-icon> location_city</mat-icon> All Accounts</a
         >
       </li>
     </ul>
-
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title> BUDGET <span>$ </span> </mat-panel-title>
-      </mat-expansion-panel-header>
-      <ul>
-        <li *ngFor="let account of budget.data.budget.accounts">
-          <a [routerLink]="['account', budget.data.budget.id, account.id]">{{
-            account.name
-          }}</a>
-        </li>
-      </ul>
-    </mat-expansion-panel>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="d-flex align-items-center">
+              <mat-icon>keyboard_arrow_right</mat-icon> <span> BUDGET</span>
+            </div>
+            <!-- <span>$ </span> -->
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul class="menu-list">
+          <li class="mb-2" *ngFor="let account of accountsBudget">
+            <a
+              routerLinkActive="active"
+              [routerLink]="['account', budget.data.budget.id, account.id]"
+              class="d-flex justify-content-between white-text"
+            >
+              <span class="white-text">{{ account.name }}</span>
+              <span [ngClass]="account.balance < 0 ? 'negative-balance' : ''">
+                ${{ account.balance }}
+              </span></a
+            >
+          </li>
+        </ul>
+      </mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="d-flex align-items-center">
+              <mat-icon>keyboard_arrow_right</mat-icon> <span>TRAKING</span>
+            </div>
+            <!-- <span>$ </span> -->
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul class="menu-list">
+          <li class="mb-2" *ngFor="let account of accountsTraking">
+            <a
+              routerLinkActive="active"
+              [routerLink]="['account', budget.data.budget.id, account.id]"
+              class="d-flex justify-content-between white-text"
+              ><span class="white-text">{{ account.name }}</span>
+              <span [ngClass]="account.balance < 0 ? 'negative-balance' : ''">
+                ${{ account.balance }}
+              </span></a
+            >
+          </li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <a class="menu-link w-auto" (click)="openDialog()">
+      <mat-icon class="mx-2">add_circle</mat-icon>
+      Add Account
+    </a>
   </div>
 </div>
-<div *ngIf="!sharedService.isSelectedBudget">
-  <h3><b>YNAB.</b></h3>
-  <p>
-    Learn More<br />
-    There’s no shame in one-after-another if it changes your life.
-  </p>
+<div *ngIf="!sharedService.isSelectedBudget" class="white-text mt-5">
+  <h1 class="text-center"><b>YNAB.</b></h1>
+  <hr class="white-ht mx-3" />
+  <h5 class="text-center mb-5">
+    <b>Learn More</b>
+  </h5>
+  <div class="d-flex mb-5">
+    <div>
+      <mat-icon>play_circle_filled</mat-icon>
+    </div>
+    <div class="ml-3">
+      <p class="sm-p">
+        There’s no shame in one-after-another if it changes your life.
+      </p>
+
+      <a
+        class="menu-link"
+        href="https://www.youneedabudget.com/videos/"
+        target="_blank"
+        rel="watch videos for you need a budget"
+      >
+        watch the Videos
+      </a>
+    </div>
+  </div>
+  <div class="d-flex mb-5">
+    <div>
+      <mat-icon>chrome_reader_mode</mat-icon>
+    </div>
+    <div class="ml-3">
+      <p class="sm-p">Stay in the know with a daily dose of all things YNAB.</p>
+
+      <a
+        class="menu-link"
+        href="https://www.youneedabudget.com/blog/"
+        target="_blank"
+        rel="watch videos for you need a budget"
+      >
+        Read the Blog
+      </a>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div>
+      <mat-icon>headset</mat-icon>
+    </div>
+    <div class="ml-3">
+      <p class="sm-p">
+        Budgeting wisdom and occasional hilarious off-topic musings.
+      </p>
+
+      <a
+        class="menu-link"
+        href="https://www.youneedabudget.com/podcasts/"
+        target="_blank"
+        rel="watch videos for you need a budget"
+      >
+        Listen to the Podcasts
+      </a>
+    </div>
+  </div>
 </div>

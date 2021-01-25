@@ -22,6 +22,7 @@ const routes: Routes = [
         pathMatch: "full",
       },
     ],
+    runGuardsAndResolvers: 'always'
   },
   { path: "notFound", component: NotFoundComponent },
   // Fallback when no prior routes is matched
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,  {onSameUrlNavigation: 'reload',})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

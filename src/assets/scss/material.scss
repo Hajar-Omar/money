@@ -6,11 +6,47 @@ mat-drawer-content {
 }
 .mat-drawer-container {
   background-color: white;
-  min-height: 50%;
+  height: 100%;
 }
 .mat-radio-label {
   align-items: baseline;
   .mat-radio-label-content {
     white-space: initial;
   }
+}
+
+.mat-drawer {
+  background-color: $dark;
+  width: 20%;
+}
+
+button.w-100 {
+  .mat-button-wrapper {
+    width: 100%;
+  }
+}
+.mat-drawer-content {
+  min-height: 100%;
+  height: auto;
+}
+
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  background: transparent;
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header-description,
+.mat-expansion-panel-header-title {
+  color: white;
+  margin: 0;
+  width: 100%;
+  justify-content: space-between;
+}
+.mat-expansion-panel-header {
+  padding: 0 !important;
+  font-size: 12px;
+}
+.mat-expansion-panel-body {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
 }

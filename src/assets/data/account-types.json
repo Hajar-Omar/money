@@ -16,8 +16,8 @@
         "viewValue": "Cash"
       },
       {
-        "value": "credit",
-        "viewValue": "Credit"
+        "value": "creditCard",
+        "viewValue": "Credit Card"
       },
       {
         "value": "lineOfCredit",
@@ -30,7 +30,7 @@
     "name": "Tracking",
     "types": [
       {
-        "value": "asset",
+        "value": "otherAsset",
         "viewValue": "Asset(e.g. Investment)"
       },
       {

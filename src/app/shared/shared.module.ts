@@ -25,9 +25,10 @@ import {
 import { DigitOnlyDirective } from "../core/directives/digit-only/digit-only.directive";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SnackbarComponent } from "./components/snackbar/snackbar.component";
+import { CreateAccountComponent } from "../account/dialogs/create-account/create-account.component";
 
 @NgModule({
-  declarations: [DigitOnlyDirective, SnackbarComponent],
+  declarations: [DigitOnlyDirective, SnackbarComponent, CreateAccountComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -81,7 +82,8 @@ import { SnackbarComponent } from "./components/snackbar/snackbar.component";
 
     // components
     SnackbarComponent,
+    CreateAccountComponent
   ],
-  entryComponents: [SnackbarComponent],
+  entryComponents: [SnackbarComponent, CreateAccountComponent],
 })
 export class SharedModule {}

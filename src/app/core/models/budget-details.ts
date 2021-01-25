@@ -43,19 +43,7 @@ export interface IBudgetDetails {
         }
       ];
       categories: ICategory[];
-      months: [
-        {
-          month: string;
-          note: string;
-          income: number;
-          budgeted: number;
-          activity: number;
-          to_be_budgeted: number;
-          age_of_money: number;
-          deleted: boolean;
-          categories: ICategory[];
-        }
-      ];
+      months: IMonth[];
       transactions: ITransaction[];
       subtransactions: ISubTransaction[];
       scheduled_transactions: IScheduledTransaction[];
@@ -63,4 +51,16 @@ export interface IBudgetDetails {
     };
     server_knowledge: number;
   };
+}
+
+export interface IMonth {
+  month: string;
+  note: string;
+  income: number;
+  budgeted: number;
+  activity: number;
+  to_be_budgeted: number;
+  age_of_money: number;
+  deleted: boolean;
+  categories: ICategory[];
 }

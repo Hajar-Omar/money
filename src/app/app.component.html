@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header *ngIf="budget" [months]="budget.data?.budget?.months"></app-header>
 <mat-drawer-container [hasBackdrop]="false">
-  <mat-drawer #drawer [mode]="'side'" [opened]="true">
+  <mat-drawer class="py-2 px-3" #drawer [mode]="'side'" [opened]="true">
     <app-side-menu [budget]="budget"></app-side-menu>
   </mat-drawer>
   <mat-drawer-content>

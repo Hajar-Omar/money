@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSort, MatTableDataSource } from "@angular/material";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { IAccountDetails } from "src/app/core/models/account";
 import { TransactionService } from "src/app/core/services/transaction/transaction.service";
 import { AccountService } from "../../core/services/account/account.service";
@@ -31,13 +31,18 @@ export class AccountDetailsComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private activatedRoute: ActivatedRoute,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private router: Router
   ) {
-    this.budgetId = this.activatedRoute.snapshot.params["budgetId"];
-    this.accountId = this.activatedRoute.snapshot.params["accountId"];
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd) {
+        this.budgetId = this.activatedRoute.snapshot.params["budgetId"];
+        this.accountId = this.activatedRoute.snapshot.params["accountId"];
 
-    this.loadAccountDetails();
-    this.loadTransactionsAccount();
+        this.loadAccountDetails();
+        this.loadTransactionsAccount();
+      }
+    });
   }
 
   ngOnInit() {}
