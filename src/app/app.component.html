@@ -1,7 +1,7 @@
 <app-header></app-header>
 <mat-drawer-container [hasBackdrop]="false">
   <mat-drawer #drawer [mode]="'side'" [opened]="true">
-    <app-side-menu></app-side-menu>
+    <app-side-menu [budget]="budget"></app-side-menu>
   </mat-drawer>
   <mat-drawer-content>
     <div class="w-100 p-3">
