@@ -36,7 +36,7 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CreateAccountComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: object,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
     private matSnackBar: MatSnackBar

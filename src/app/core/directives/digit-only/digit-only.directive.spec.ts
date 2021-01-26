@@ -1,8 +1,10 @@
-import { DigitOnlyDirective } from './digit-only.directive';
+import { ElementRef } from "@angular/core";
+import { DigitOnlyDirective } from "./digit-only.directive";
 
-describe('DigitOnlyDirective', () => {
-  it('should create an instance', () => {
-    const directive = new DigitOnlyDirective();
+describe("DigitOnlyDirective", () => {
+  it("should create an instance", () => {
+    let element: ElementRef;
+    const directive = new DigitOnlyDirective(element);
     expect(directive).toBeTruthy();
   });
 });

@@ -1,12 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { HttpTestingController } from "@angular/common/http/testing";
+import { TestBed } from "@angular/core/testing";
+import { TestingModule } from "src/app/testing/testing.module";
+import { AppConfigService } from "../app-config/app-config.service";
 
-import { TransactionService } from './transaction.service';
+import { TransactionService } from "./transaction.service";
 
-describe('TransactionService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe("TransactionService", () => {
+  let appConfigService: AppConfigService;
+  let httpTestingController: HttpTestingController;
+  let service: TransactionService;
 
-  it('should be created', () => {
-    const service: TransactionService = TestBed.get(TransactionService);
+  beforeEach(() => {
+    TestBed.configureTestingModule({ imports: [TestingModule] });
+
+    appConfigService = TestBed.get(AppConfigService);
+    httpTestingController = TestBed.get(HttpTestingController);
+    service = TestBed.get(TransactionService);
+  });
+
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

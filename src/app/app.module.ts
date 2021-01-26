@@ -12,6 +12,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpHeadersInterceptor } from "./core/interceptors/http.interceptor";
 import { HttpErrorInterceptor } from "./core/interceptors/http-error.interceptor";
 import { SharedModule } from "./shared/shared.module";
+import { CreateAccountComponent } from "./account/dialogs/create-account/create-account.component";
+import { SnackbarComponent } from "./shared/components/snackbar/snackbar.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { SharedModule } from "./shared/shared.module";
     HeaderComponent,
     SideMenuComponent,
     NotFoundComponent,
+    SnackbarComponent, CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { SharedModule } from "./shared/shared.module";
     AppRoutingModule,
     SharedModule,
   ],
+  entryComponents:[ SnackbarComponent, CreateAccountComponent],
   providers: [
     {
       provide: APP_INITIALIZER,

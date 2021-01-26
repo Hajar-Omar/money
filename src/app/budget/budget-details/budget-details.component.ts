@@ -33,9 +33,9 @@ export class BudgetDetailsComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params["id"];
     this.loadCategories();
 
-    this.sharedService.selectedBudget.subscribe(
-      (d) => (this.months = d.data.budget.months)
-    );
+    this.sharedService.selectedBudget.subscribe((d) => {
+      if (d) this.months = d.data.budget.months;
+    });
   }
 
   ngOnInit() {}

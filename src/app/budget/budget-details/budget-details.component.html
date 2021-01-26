@@ -42,22 +42,31 @@
     </div>
     <div class="d-flex justify-content-center flex-column">
       <p class="xs-p m-0">
-        {{ months[selectedMonth].activity > 0 ? "+" : "-" }}
-        {{ months[selectedMonth].activity }} Overspent in
+        {{ months[selectedMonth].activity > 0 ? "+" : "" }}
+        {{
+          months[selectedMonth].activity | currency: "USD":"symbol":"2.0"
+        }}
+        Overspent in
         <span class="capt-text">{{
           months[selectedMonth].month | date: "MMM"
         }}</span>
       </p>
       <p class="xs-p m-0">
-        {{ months[selectedMonth].budgeted > 0 ? "+" : "-" }}
-        {{ months[selectedMonth].budgeted }} Budgeted in
+        {{ months[selectedMonth].budgeted > 0 ? "+" : "" }}
+        {{
+          months[selectedMonth].budgeted | currency: "USD":"symbol":"2.0"
+        }}
+        Budgeted in
         <span class="capt-text">{{
           months[selectedMonth].month | date: "MMM"
         }}</span>
       </p>
       <p class="xs-p m-0">
-        {{ months[selectedMonth].income > 0 ? "+" : "-" }}
-        {{ months[selectedMonth].income }} Budgeted in
+        {{ months[selectedMonth].income > 0 ? "+" : "" }}
+        {{
+          months[selectedMonth].income | currency: "USD":"symbol":"2.0"
+        }}
+        Budgeted in
         <span class="capt-text">{{
           months[selectedMonth].month | date: "MMM"
         }}</span>
@@ -88,7 +97,8 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           <div class="d-flex align-items-center">
-            <mat-icon>keyboard_arrow_right</mat-icon> <span class="px-2">{{ element.name }}</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span class="px-2">{{ element.name }}</span>
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>

@@ -28,7 +28,7 @@ import { SnackbarComponent } from "./components/snackbar/snackbar.component";
 import { CreateAccountComponent } from "../account/dialogs/create-account/create-account.component";
 
 @NgModule({
-  declarations: [DigitOnlyDirective, SnackbarComponent, CreateAccountComponent],
+  declarations: [DigitOnlyDirective,],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -81,9 +81,9 @@ import { CreateAccountComponent } from "../account/dialogs/create-account/create
     DigitOnlyDirective,
 
     // components
-    SnackbarComponent,
-    CreateAccountComponent
+    // SnackbarComponent,
+    // CreateAccountComponent
   ],
-  entryComponents: [SnackbarComponent, CreateAccountComponent],
+  // entryComponents: [SnackbarComponent, CreateAccountComponent],
 })
 export class SharedModule {}
