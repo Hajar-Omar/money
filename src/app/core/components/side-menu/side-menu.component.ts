@@ -5,7 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatDrawer } from "@angular/material";
 import { CreateAccountComponent } from "src/app/account/dialogs/create-account/create-account.component";
 import { IAccount } from "../../models/account";
 import { IBudgetDetails } from "../../models/budget-details";
@@ -18,6 +18,7 @@ import { SharedService } from "../../services/shared/shared.service";
 })
 export class SideMenuComponent implements OnInit, OnChanges {
   @Input("budget") budget: IBudgetDetails;
+  @Input("drawer") drawer: MatDrawer;
 
   accountsBudget: IAccount[] = [];
   accountsTraking: IAccount[] = [];

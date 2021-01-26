@@ -13,6 +13,7 @@ import {
 } from "@angular/material";
 import { openSnackBar } from "src/app/core/helpers/snackBar";
 import { IAccountNew, IAccountType } from "src/app/core/models/account";
+import { Months } from "src/app/core/models/months";
 import { AccountService } from "src/app/core/services/account/account.service";
 
 @Component({
@@ -30,6 +31,9 @@ export class CreateAccountComponent implements OnInit {
 
   selectedPlan: MatRadioChange;
 
+  months: string[] = Months;
+  years: number[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<CreateAccountComponent>,
     @Inject(MAT_DIALOG_DATA) public data: object,
@@ -44,6 +48,10 @@ export class CreateAccountComponent implements OnInit {
       name: new FormControl("", [Validators.required]),
       balance: new FormControl("", [Validators.required]),
     });
+
+    //calculate years
+    let currentYear = new Date().getFullYear();
+    for (let i = 0; i < 10; i++) this.years.push(currentYear++);
   }
 
   ngOnInit() {}

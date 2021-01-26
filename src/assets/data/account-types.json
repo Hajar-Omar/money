@@ -34,7 +34,7 @@
         "viewValue": "Asset(e.g. Investment)"
       },
       {
-        "value": "liability",
+        "value": "otherLiability",
         "viewValue": "Liability(e.g. Mortgage)"
       }
     ]

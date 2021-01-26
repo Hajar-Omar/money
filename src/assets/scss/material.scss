@@ -6,7 +6,7 @@ mat-drawer-content {
 }
 .mat-drawer-container {
   background-color: white;
-  height: 100%;
+  min-height: calc(100% - 102px);
 }
 .mat-radio-label {
   align-items: baseline;
@@ -28,6 +28,7 @@ button.w-100 {
 .mat-drawer-content {
   min-height: 100%;
   height: auto;
+  padding: 0;
 }
 
 .mat-expansion-panel:not([class*="mat-elevation-z"]) {
@@ -49,4 +50,66 @@ button.w-100 {
 .mat-expansion-panel-body {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
+}
+
+.dark-expan-panel {
+  .mat-expansion-panel-header {
+    background-color: #f2f2f7;
+    padding: 1rem !important;
+    font-size: 14px;
+    .mat-expansion-panel-header-title {
+      color: #000;
+    }
+  }
+  .mat-expansion-panel-body {
+    padding-bottom: 0;
+  }
+}
+
+.mat-drawer.mat-drawer-side:not(.mat-drawer-opened) {
+  left: -15%;
+  visibility: visible !important;
+  transform: none;
+  .menu-list {
+    li {
+      a {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+  .change-justify {
+    justify-content: flex-end !important;
+  }
+  .hide-not-opend,
+  .mat-accordion {
+    display: none !important;
+  }
+
+  & ~ .mat-drawer-content {
+    margin-left: 70px;
+  }
+}
+.btn-icon {
+  background: transparent;
+  color: white;
+  box-shadow: none !important;
+}
+
+.mat-select-panel .mat-optgroup-label,
+.mat-select-panel .mat-option {
+  height: 2em !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $base;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $base;
 }

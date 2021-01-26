@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource, MatSort, MatDialog } from "@angular/material";
+import { Component, OnInit } from "@angular/core";
+import { MatTableDataSource, MatDialog } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";
 import { AccountService } from "../../core/services/account/account.service";
 import { CreateAccountComponent } from "../dialogs/create-account/create-account.component";
@@ -12,9 +12,8 @@ import { CreateAccountComponent } from "../dialogs/create-account/create-account
 export class AccountListComponent implements OnInit {
   budgetId: string;
 
-  displayedColumns: string[] = ["name", "type", "note", "balance"];
+  displayedColumns: string[] = ["name", "type", "note", "outflow","inflow"];
   dataSource = new MatTableDataSource([]);
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   loaded = false;
 

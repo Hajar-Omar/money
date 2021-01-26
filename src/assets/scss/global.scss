@@ -28,6 +28,10 @@ img {
   background-color: #e0e0e0;
 }
 
+.grey-text {
+  color: #ddd;
+}
+
 .box {
   position: relative;
   border: 1px solid #e0e0e0;
@@ -51,6 +55,8 @@ img {
 .simple-table {
   td {
     border-bottom: 1px solid #eee;
+    cursor: pointer;
+    padding: 0.5rem;
   }
 }
 .example-detail-row {
@@ -132,4 +138,73 @@ ul {
 a {
   cursor: pointer;
   text-decoration: none;
+}
+
+.light-bg {
+  background-color: #f2f2f7;
+}
+.green-box {
+  display: flex;
+  flex-direction: column;
+  background: #6d9f38;
+  border-radius: 10px;
+  padding: 0.3rem 2rem;
+  position: relative;
+  justify-content: center;
+
+  &::after {
+    position: absolute;
+    top: 32%;
+    content: "";
+    background-color: #6d9f38;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+    border-radius: 10%;
+  }
+}
+
+.xs-p {
+  font-size: 12px;
+}
+
+.navi-btn {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $light-base;
+  border: 3px solid $light-base;
+  font-weight: bolder;
+  margin: 0 1rem;
+
+  &:disabled {
+    color: $light-base-opacity;
+    border-color: $light-base-opacity;
+  }
+}
+
+.capt-text {
+  text-transform: capitalize;
+}
+
+table {
+  td,
+  th {
+    background-color: white !important;
+    vertical-align: middle !important;
+  }
+  th {
+    border-width: 1px !important;
+  }
+}
+
+.cursor-table {
+  tr {
+    cursor: pointer;
+  }
 }

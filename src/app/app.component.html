@@ -1,14 +1,14 @@
-<app-header *ngIf="budget" [months]="budget.data?.budget?.months"></app-header>
-<mat-drawer-container [hasBackdrop]="false">
+<app-header *ngIf="budget"></app-header>
+<mat-drawer-container
+  [hasBackdrop]="false"
+  [ngClass]="{ 'h-100': !sharedService.isSelectedBudget }"
+>
   <mat-drawer class="py-2 px-3" #drawer [mode]="'side'" [opened]="true">
-    <app-side-menu [budget]="budget"></app-side-menu>
+    <app-side-menu [budget]="budget" [drawer]="drawer"></app-side-menu>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="w-100 p-3">
+    <div class="w-100">
       <router-outlet></router-outlet>
-      <button mat-raised-button (click)="drawer.toggle()">
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

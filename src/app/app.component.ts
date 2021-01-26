@@ -13,7 +13,7 @@ export class AppComponent {
 
   budget: IBudgetDetails;
 
-  constructor(private router: Router, private sharedService: SharedService) {
+  constructor(private router: Router, public sharedService: SharedService) {
     // on change route , check selected route
     this.router.events.subscribe((e) => {
       if (

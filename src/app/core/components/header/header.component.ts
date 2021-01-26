@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { IMonth } from "../../models/budget-details";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-header",
@@ -7,8 +6,6 @@ import { IMonth } from "../../models/budget-details";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  @Input("months") months: IMonth[];
-
   constructor() {}
 
   ngOnInit() {}

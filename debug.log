@@ -1,1 +1,4 @@
 [0124/092557.036:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0126/152306.421:ERROR:file_io_win.cc(162)] CreateFile C:\Users\hkamel\AppData\Local\Temp\karma-52314037\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
+[0126/152306.424:ERROR:file_io_win.cc(171)] CreateFile C:\Users\hkamel\AppData\Local\Temp\karma-52314037\Crashpad\reports\2b67f799-b899-493a-8cfd-679c3c5c9802.dmp: The system cannot find the path specified. (0x3)
+[0126/152306.424:ERROR:crash_report_exception_handler.cc(99)] PrepareNewCrashReport failed
