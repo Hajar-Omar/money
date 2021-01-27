@@ -16,6 +16,17 @@ describe("PayeeService", () => {
     appConfigService = TestBed.get(AppConfigService);
     httpTestingController = TestBed.get(HttpTestingController);
     service = TestBed.get(PayeeService);
+
+    // set base url
+    appConfigService.AppConfig = {
+      baseUrl: "https://api.youneedabudget.com/v1/",
+      token: "",
+    };
+  });
+
+  // verify that there are no pending HTTP requests.
+  afterEach(() => {
+    httpTestingController.verify();
   });
 
   it("should be created", () => {

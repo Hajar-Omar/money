@@ -60,6 +60,8 @@ export interface ITransactionList {
   data: {
     transactions: [
       {
+        type?: string;
+        parent_transaction_id?: string;
         id: string;
         date: string;
         amount: number;

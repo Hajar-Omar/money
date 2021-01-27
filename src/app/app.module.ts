@@ -21,7 +21,8 @@ import { SnackbarComponent } from "./shared/components/snackbar/snackbar.compone
     HeaderComponent,
     SideMenuComponent,
     NotFoundComponent,
-    SnackbarComponent, CreateAccountComponent
+    SnackbarComponent,
+    CreateAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { SnackbarComponent } from "./shared/components/snackbar/snackbar.compone
     AppRoutingModule,
     SharedModule,
   ],
-  entryComponents:[ SnackbarComponent, CreateAccountComponent],
+  entryComponents: [SnackbarComponent, CreateAccountComponent],
   providers: [
     {
       provide: APP_INITIALIZER,

@@ -8,6 +8,7 @@ import {
 import { of } from "rxjs";
 import { delay } from "rxjs/operators";
 import { IBudgetListRes } from "src/app/core/models/budget";
+import { AppConfigService } from "src/app/core/services/app-config/app-config.service";
 import { BudgetService } from "src/app/core/services/budget/budget.service";
 import { SharedService } from "src/app/core/services/shared/shared.service";
 import { budgetsMock } from "src/app/testing/mock-data/budgets.mock";
@@ -21,16 +22,24 @@ describe("BudgetListComponent", () => {
 
   let budgetService: BudgetService;
   let sharedService: SharedService;
+  let appConfigService: AppConfigService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TestingModule],
-      providers: [BudgetService, SharedService],
+      providers: [BudgetService, SharedService, AppConfigService],
       declarations: [BudgetListComponent],
     }).compileComponents();
 
+    appConfigService = TestBed.get(AppConfigService);
     budgetService = TestBed.get(BudgetService);
     sharedService = TestBed.get(SharedService);
+
+    // set base url
+    appConfigService.AppConfig = {
+      baseUrl: "https://api.youneedabudget.com/v1/",
+      token: "",
+    };
   }));
 
   beforeEach(() => {
@@ -47,7 +56,7 @@ describe("BudgetListComponent", () => {
     const response: IBudgetListRes = budgetsMock;
 
     spyOn(budgetService, "getAllBudgets").and.returnValue(
-      of(response).pipe(delay(100))
+      of(response).pipe(delay(1))
     );
 
     // Trigger ngOnInit()
@@ -58,7 +67,7 @@ describe("BudgetListComponent", () => {
     component.loadBudgets();
 
     // Simulates the asynchronous passage of time
-    tick(1000);
+    tick(1);
     expect(component.budgets).toEqual(response.data.budgets);
   }));
 });

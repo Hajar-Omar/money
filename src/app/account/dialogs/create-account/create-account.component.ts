@@ -15,6 +15,8 @@ import { openSnackBar } from "src/app/core/helpers/snackBar";
 import { IAccountNew, IAccountType } from "src/app/core/models/account";
 import { Months } from "src/app/core/models/months";
 import { AccountService } from "src/app/core/services/account/account.service";
+import { BudgetService } from "src/app/core/services/budget/budget.service";
+import { SharedService } from "src/app/core/services/shared/shared.service";
 
 @Component({
   selector: "app-create-account",
@@ -39,7 +41,9 @@ export class CreateAccountComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    private budgetService: BudgetService,
+    private sharedService: SharedService
   ) {
     this.loadAccountTypes();
 
@@ -87,6 +91,11 @@ export class CreateAccountComponent implements OnInit {
       (d) => {
         this.success = true;
         openSnackBar(this.matSnackBar, "Account is created Successfully", true);
+
+        // update accounts in side menu - update budget data - update budget data in localStorage
+        this.budgetService
+          .getBudgetById(this.data["budgetId"])
+          .subscribe((d) => this.sharedService.setSelectedBudget(d));
       },
       (e) => {
         this.onNoClick();

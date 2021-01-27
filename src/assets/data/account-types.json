@@ -30,11 +30,11 @@
     "name": "Tracking",
     "types": [
       {
-        "value": "otherAsset",
+        "value": "OtherAsset",
         "viewValue": "Asset(e.g. Investment)"
       },
       {
-        "value": "otherLiability",
+        "value": "OtherLiability",
         "viewValue": "Liability(e.g. Mortgage)"
       }
     ]
